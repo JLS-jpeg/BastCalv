@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, session, request, jsonify
 from datetime import timedelta, datetime, time, date
 from pony.orm import Database, Required, db_session, select, PrimaryKey, Set, commit, Optional
-from flask_bcrypt import Bcrypt, check_password_hash, generate_password_hash
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
