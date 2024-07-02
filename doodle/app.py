@@ -9,7 +9,7 @@ app.secret_key = "super secret key"
 app.config['PONY'] = {
     'provider': 'mysql',
     'host': 'localhost',
-    'port': 8889,
+    'port': 8080,
     'user': 'bastien',
     'passwd': 'bastien',
     'db': 'doodle'
