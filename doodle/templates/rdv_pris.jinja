@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Liste RDV | Proméo Formation </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% extends "layout.jinja" %}
+
+    {% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Listes des rendez-vous pour vous : {{ formateur.Prenom }} {{ formateur.Nom }}</h1>
+    </div>
+    <div class="container">
+        <div class="summary-table">
+            <h2 class="text-center">Récapitulatif des Rendez-vous</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Adresse Email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Heure</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rdv in rdvs %}
+                    <tr>
+                        <td>{{ rdv.Nom }}</td>
+                        <td>{{ rdv.Prenom }}</td>
+                        <td>{{ rdv.Mail }}</td>
+                        <td>{{ rdv.Date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ rdv.Heure.strftime('%H:%M') }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_rdv', rdv_id=rdv.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

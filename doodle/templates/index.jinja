@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Accueil | Proméo Formation </title>
+</head>
+<body>
+
+    {% extends "layout.jinja" %}
+
+    {% block content %}
+
+    <div class="jumbotron">
+        <h1 class="display-4">
+            Bienvenue
+            {% if username %}
+                {{ username }} !
+            {% else %}
+                !
+            {% endif %}
+        </h1>
+        {% if not username %}
+            <p class="lead">Prenez rapidement Rendez-vous avec un formateur en cliquant sur le bouton du bas !</p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="loginFormateur" role="button">Connexion formateur</a>
+            <a class="btn btn-primary btn-lg" href="loginEleve" role="button">Connexion Eleve</a>
+        {% endif %}
+    </div>
+
+    {% endblock %}
+
+</body>
+</html>

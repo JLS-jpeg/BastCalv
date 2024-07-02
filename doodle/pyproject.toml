@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "doodleApp"
+version = "0.1.0"
+description = ""
+authors = ["Gasteau Louca <lgasteau@hotmail.fr>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.1"
+pony = "^0.7.17"
+pymysql = "^1.1.0"
+python-dotenv = "^1.0.1"
+doodle = "^0.1.0"
+Werkzeug = "^3.0.1"
+Flask-Mail = "^0.9.1"
+cryptography = "^42.0.8"
+bcrypt = "^4.1.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
