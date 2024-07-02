@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "doodle"
+name = "doodleApp"
 version = "0.1.0"
 description = ""
 authors = ["POLISZUK & VANDAMME"]
