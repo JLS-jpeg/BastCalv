@@ -8,7 +8,7 @@ app.secret_key = "super secret key"
 # Configuration de la base de données
 app.config['PONY'] = {
     'provider': 'mysql',
-    'host': 'localhost',
+    'host': 'host.docker.internal',
     'port': 8889,
     'user': 'bastien',
     'passwd': 'bastien',
