@@ -1,14 +1,10 @@
-from flask import Flask, render_template, redirect, url_for, session, request, jsonify, flash
+from flask import Flask, render_template, redirect, url_for, session, request, jsonify
 from datetime import timedelta, datetime, time, date
 from pony.orm import Database, Required, db_session, select, PrimaryKey, Set, commit, Optional
-import bcrypt
+from flask_bcrypt import Bcrypt, check_password_hash, generate_password_hash
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
-
-# Lire le mot de passe de la base de données à partir du fichier secret
-with open('/run/secrets/db_password', 'r') as file:
-    db_password = file.read().strip()
 
 # Configuration de la base de données
 app.config['PONY'] = {
@@ -16,7 +12,7 @@ app.config['PONY'] = {
     'host': 'localhost',
     'port': 8889,
     'user': 'bastien',
-    'passwd': db_password,
+    'passwd': 'bastien',
     'db': 'doodle'
 }
 
@@ -73,7 +69,7 @@ db.generate_mapping(create_tables=False)
 @app.route('/api/rendezvousapprenti')
 @db_session
 def api_rendezvousapprenti():
-    rendezvous = RDVs.select()
+    rendezvous = RDVs.select() 
     events = []
 
     for rv in rendezvous:
@@ -222,8 +218,6 @@ def loginformateurs():
     
     return render_template('connectformateurs.jinja')
 
-@app.route('/loginformateurs.jinja')
-
 @app.route('/loginapprentis', methods=['GET', 'POST'])
 @db_session
 def loginapprentis():
@@ -280,4 +274,3 @@ def get_apprentis(mail):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
