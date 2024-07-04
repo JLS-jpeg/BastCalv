@@ -1,3 +1,5 @@
+POLISZUK & VANDAMME
+
 La bdd est présente dans les fichiers
 
 # Application Web Proméo Formation
